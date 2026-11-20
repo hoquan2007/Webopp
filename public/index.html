@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Khám phá iPhone, Galaxy và Google Pixel tại Forma.">
+  <meta name="theme-color" content="#ffffff">
+  <title>Forma | Cửa hàng điện thoại</title>
+  <link rel="icon" href="/assets/forma.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/store.css">
+  <script type="module" src="/assets/home.js"></script>
+</head>
+<body>
+  <!-- Khung điều hướng và footer được dùng chung cho tất cả các trang. -->
+  <header id="site-header"></header>
+  <main id="main">
+    <section class="shell hero" aria-labelledby="home-title">
+      <div class="hero-copy">
+        <h1 id="home-title">Điện thoại.<br>Chất riêng.</h1>
+        <p>iPhone, Galaxy và Pixel. Tìm chiếc điện thoại hợp với bạn.</p>
+        <a class="button" href="/dien-thoai">Khám phá điện thoại <span aria-hidden="true">↗</span></a>
+      </div>
+      <figure class="hero-stage">
+        <img class="hero-art" src="/media/hero-pro.webp" alt="Mặt trước và mặt sau của iPhone 17 Pro màu Cam Vũ Trụ" width="1130" height="1130" fetchpriority="high">
+        <figcaption class="hero-caption">
+          <a href="/san-pham?id=iphone-17-pro">iPhone 17 Pro <span>Cam Vũ Trụ</span></a>
+          <button type="button" class="film-button" id="open-film"><span class="play" aria-hidden="true"></span> Xem thiết kế</button>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="shell section" aria-labelledby="featured-title">
+      <div class="section-head">
+        <h2 id="featured-title">Mẫu nổi bật<span class="accent">.</span></h2>
+        <a class="text-link" href="/dien-thoai">Xem tất cả <span aria-hidden="true">↗</span></a>
+      </div>
+      <div id="featured" class="feature-grid" aria-live="polite"><p class="muted">Đang tải sản phẩm…</p></div>
+    </section>
+
+    <section class="shell section editorial" aria-labelledby="editorial-title">
+      <div class="editorial-art">
+        <img src="/media/galaxy-story.webp" alt="Cận cảnh thiết kế và cụm camera của Galaxy S25 Ultra" width="1440" height="560" loading="lazy">
+      </div>
+      <div class="editorial-copy">
+        <h2 id="editorial-title">Galaxy S25 Ultra<span class="accent">.</span></h2>
+        <p>Khung titan, bút S Pen tích hợp và camera 200 MP.</p>
+        <a class="text-link" href="/san-pham?id=galaxy-s25-ultra">Xem Galaxy S25 Ultra <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="shell section buying" id="ho-tro" aria-labelledby="buying-title">
+      <h2 id="buying-title">Cách mua hàng<span class="accent">.</span></h2>
+      <div>
+        <details><summary>Chọn phiên bản điện thoại thế nào?</summary><p>Vào trang sản phẩm để xem ảnh từng màu, chọn dung lượng và xem giá trước khi thêm vào giỏ.</p></details>
+        <details><summary>Phí giao hàng được tính ra sao?</summary><p>Phí giao hàng trong bản demo là 50.000 ₫. Đơn có tạm tính từ 20.000.000 ₫ được miễn phí giao hàng.</p></details>
+        <details><summary>Tôi có thể thử thanh toán bằng cách nào?</summary><p>Dùng tài khoản demo trên trang Đăng nhập. Tại bước thanh toán, chọn trả khi nhận hàng hoặc mô phỏng thanh toán online. Không cần nhập thông tin ngân hàng.</p></details>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer"></footer>
+
+  <!-- Chỉ tải video khi khách mở trình chiếu. -->
+  <dialog class="film-dialog" id="film" aria-labelledby="film-title">
+    <div class="dialog-bar"><h2 id="film-title">Thiết kế iPhone 17 Pro</h2><form method="dialog"><button class="icon-button" aria-label="Đóng video">×</button></form></div>
+    <video controls playsinline preload="none" poster="/media/pro-detail.webp" data-src="/media/iphone-design.mp4"
+      aria-label="Video Apple minh họa phần khung nhôm quanh cụm camera của iPhone 17 Pro"></video>
+    <p>Apple Newsroom · Thiết kế khung nhôm và cụm camera.</p>
+  </dialog>
+  <noscript><p class="shell">Bật JavaScript để xem danh mục và sử dụng giỏ hàng.</p></noscript>
+</body>
+</html>

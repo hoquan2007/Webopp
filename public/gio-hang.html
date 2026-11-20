@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Kiểm tra điện thoại đã chọn, phí giao hàng và mã ưu đãi tại Forma.">
+  <title>Giỏ hàng | Forma</title>
+  <link rel="icon" href="/assets/forma.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/store.css">
+  <script type="module" src="/assets/cart.js"></script>
+</head>
+<body>
+  <header id="site-header"></header>
+  <main class="shell inside" id="main">
+    <div class="page-title"><h1>Giỏ hàng<span class="accent">.</span></h1><p>Kiểm tra cấu hình trước khi đặt hàng.</p></div>
+    <!-- Giá và mọi khoản phí đến từ API báo giá, kể cả khi đổi số lượng. -->
+    <div id="cart" aria-busy="true"><p class="muted">Đang tính giỏ hàng…</p></div>
+    <p id="cart-status" class="sr-only" role="status"></p>
+  </main>
+  <footer id="site-footer"></footer>
+</body>
+</html>

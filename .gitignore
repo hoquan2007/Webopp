@@ -1,0 +1,9 @@
+# Tệp biên dịch, cấu hình riêng và tài liệu làm việc.
+.build/
+build/
+.vercel/
+.work/
+.taste-skill/
+.hallmark/
+node_modules/
+.env*
