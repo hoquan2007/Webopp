@@ -33,8 +33,7 @@
   --error: #a32b30;
   --error-field: #fff0f0;
   --backdrop: rgb(10 17 30 / 74%);
-  --width: 1260px;
-  --gutter: clamp(16px, 3.7vw, 54px);
+  --gutter: clamp(16px, 2vw, 32px);
   --gap: clamp(.8rem, 1.8vw, 1.45rem);
   --radius: 20px;
   --control-radius: 9px;
@@ -68,7 +67,8 @@ h3 { font-size: clamp(1rem, 1.55vw, 1.28rem); }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 [id] { scroll-margin-top: 9.5rem; }
 
-.shell { width: min(var(--width), calc(100% - var(--gutter) * 2)); margin-inline: auto; }
+/* Một lề nhỏ cho menu, tiêu đề và lưới trên mọi chiều rộng. */
+.shell { width: calc(100% - var(--gutter) * 2); margin-inline: auto; }
 .section { margin-top: var(--section); }
 .muted { color: var(--muted); }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: clip; clip-path: inset(50%); white-space: nowrap; }
@@ -151,14 +151,13 @@ h3 { font-size: clamp(1rem, 1.55vw, 1.28rem); }
 
 /* Banner phủ toàn chiều rộng, chữ và nút canh theo lề nội dung của cửa hàng. */
 .showcase {
-  --showcase-inset: max(var(--gutter), (100% - var(--width)) / 2);
   color: var(--white);
   background: var(--night);
 }
 .showcase-panel {
   --stage: var(--pro-stage);
   display: grid;
-  grid-template-columns: var(--showcase-inset) min(44%, 600px) minmax(0, 1fr);
+  grid-template-columns: var(--gutter) minmax(0, .86fr) minmax(0, 1.14fr);
   min-height: clamp(380px, 33vw, 560px);
   isolation: isolate;
   background: var(--stage);
@@ -178,7 +177,7 @@ h3 { font-size: clamp(1rem, 1.55vw, 1.28rem); }
 .showcase-image img { position: absolute; width: min(100%, 685px); height: 108%; inset-block-start: -6%; object-fit: contain; }
 .showcase-panel[data-model='pro'] .showcase-image img { width: min(100%, 920px); height: auto; inset: 3% max(-2%, (100% - 920px) / 2) auto auto; transform: rotate(-9deg); }
 .showcase-image figcaption { position: absolute; inset: auto max(1.2rem, (100% - 920px) / 2) 1rem auto; padding: .38rem .72rem; border-radius: var(--control-radius); background: var(--night); font-size: .76rem; color: var(--white); }
-.showcase-nav { display: flex; justify-content: space-between; gap: .5rem; align-items: center; padding: .6rem var(--showcase-inset); }
+.showcase-nav { display: flex; justify-content: space-between; gap: .5rem; align-items: center; padding: .6rem var(--gutter); }
 .showcase-choices, .showcase-arrows { display: flex; align-items: center; gap: .45rem; }
 .showcase-choices button { min-height: 42px; padding: .55rem .8rem; border: 0; border-radius: var(--control-radius); background: transparent; color: var(--nav-muted); font-size: .85rem; font-weight: 760; }
 .showcase-choices button[aria-pressed='true'], .showcase-choices button:hover, .showcase-arrows button:hover { background: var(--nav-hover); color: var(--white); }
@@ -188,7 +187,7 @@ h3 { font-size: clamp(1rem, 1.55vw, 1.28rem); }
 .brand-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); }
 .brand-entry {
   display: grid;
-  grid-template-columns: minmax(65px, .85fr) minmax(0, 1fr) auto;
+  grid-template-columns: clamp(90px, 38%, 170px) minmax(0, 1fr) auto;
   align-items: center;
   gap: .55rem;
   min-height: 123px;
@@ -209,11 +208,11 @@ h3 { font-size: clamp(1rem, 1.55vw, 1.28rem); }
 .section-head { display: flex; align-items: end; justify-content: space-between; flex-wrap: wrap; gap: .3rem 1rem; }
 .feature-grid, .catalog-grid { display: grid; gap: var(--gap); }
 .feature-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.catalog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.catalog-grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
 .product-tile { min-width: 0; display: flex; }
 .tile-link { display: grid; width: 100%; min-width: 0; grid-template-rows: auto 1fr; background: var(--paper); border-radius: var(--radius); overflow: clip; }
 .tile-link:focus-visible { outline-offset: 3px; }
-.tile-art { position: relative; aspect-ratio: 1.23; background: var(--sky-field); overflow: clip; }
+.tile-art { position: relative; aspect-ratio: 1.23; max-block-size: 350px; background: var(--sky-field); overflow: clip; }
 .product-tile:nth-child(even) .tile-art { background: var(--blue-soft); }
 .tile-art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; transition: transform .25s ease; }
 .tile-link:is(:hover, :focus-visible) .tile-art img { transform: translateY(-3px) scale(1.035); }
@@ -230,8 +229,8 @@ h3 { font-size: clamp(1rem, 1.55vw, 1.28rem); }
 .tile-arrow { color: var(--accent); font-weight: 800; }
 
 .editorial { display: grid; grid-template-columns: minmax(0, 1.43fr) minmax(0, .9fr); color: var(--white); background: var(--night); border-radius: var(--radius); overflow: clip; }
-.editorial-art { min-height: clamp(180px, 24vw, 315px); }
-.editorial-art img { width: 100%; height: 100%; object-fit: cover; }
+.editorial-art { position: relative; min-height: clamp(180px, 24vw, 395px); }
+.editorial-art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .editorial-copy { align-self: center; padding: clamp(1.4rem, 4.6vw, 3.8rem); }
 .editorial-copy p { margin-block: .75rem 1.15rem; color: var(--nav-muted); max-width: 33ch; }
 .editorial-copy .text-link { color: var(--white); }
