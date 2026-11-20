@@ -7,10 +7,12 @@ const root = fileURLToPath(new URL('../', import.meta.url));
 const binary = process.platform === 'win32' ? 'build/forma-core.exe' : 'build/forma-core';
 mkdirSync(new URL('../build/', import.meta.url), { recursive: true });
 
+// Windows dùng thư viện tĩnh để chạy ngoài MSYS2. Linux dùng libstdc++ của hệ thống.
+const linkerFlags = process.platform === 'win32' ? ['-static-libgcc', '-static-libstdc++'] : [];
 const result = spawnSync(process.env.CXX || 'g++', [
   '-std=c++17', '-O2', '-Wall', '-Wextra', '-pedantic',
   '-finput-charset=UTF-8', '-fexec-charset=UTF-8',
-  '-static-libgcc', '-static-libstdc++',
+  ...linkerFlags,
   'cpp/main.cpp', 'cpp/catalog.cpp', 'cpp/store.cpp', '-o', binary
 ], { cwd: root, stdio: 'inherit' });
 
