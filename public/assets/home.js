@@ -66,6 +66,7 @@ const featured = document.querySelector('#featured');
 try {
   ({ products } = await api('catalog'));
   showPrice();
+  document.querySelector('#all-phones-label').textContent = `Xem cả ${products.length} mẫu`;
   featured.innerHTML = products.filter(product => product.featured).map(tile).join('');
 } catch (error) {
   showError(featured, error);

@@ -1,6 +1,6 @@
 # Forma
 
-Forma là cửa hàng điện thoại demo bằng tiếng Việt. Danh mục có sáu mẫu iPhone, Samsung Galaxy và Google Pixel, với ảnh từ hãng, lựa chọn phiên bản, giỏ hàng, đăng nhập và đặt đơn thử. Giá và ưu đãi là dữ liệu mẫu.
+Forma là cửa hàng điện thoại demo bằng tiếng Việt. Danh mục gồm 30 model với 15 iPhone, 9 Samsung Galaxy và 6 Google Pixel. Mỗi model có ảnh theo màu, lựa chọn dung lượng và giá demo.
 
 ## Chạy trên máy
 
@@ -27,7 +27,8 @@ Chọn màu và dung lượng, thêm vào giỏ, thử mã ưu đãi, đăng nh�
 public/          Sáu trang HTML, CSS, JavaScript và ảnh/video
 api/store.js     HTTP, scrypt và cookie phiên
 cpp/main.cpp     Nhận dữ liệu JSON rồi chuyển đến lớp nghiệp vụ
-cpp/catalog.cpp  Danh mục, màu, dung lượng, tìm kiếm, sắp xếp
+cpp/catalog.cpp        Tra cứu, lọc và sắp xếp danh mục
+cpp/catalog_models.cpp Ảnh, cấu hình, màu và giá demo theo model
 cpp/store.hpp    Khai báo các lớp và quan hệ giữa chúng
 cpp/store.cpp    Kiểm tra giỏ, tính tiền, giao hàng, đặt đơn và thanh toán
 scripts/         Lệnh biên dịch và máy chủ chạy thử
@@ -65,7 +66,7 @@ Tài liệu gốc của nền tảng. [Build image có gcc-c++](https://vercel.c
 
 ## Nguồn ảnh, video và thư viện
 
-- Ảnh iPhone lấy từ CDN Apple Store và Apple Newsroom. Video đầu trang là clip của Apple về phần khung nhôm quanh cụm camera iPhone 17 Pro. [Apple Newsroom](https://www.apple.com/newsroom/2025/09/apple-unveils-iphone-17-pro-and-iphone-17-pro-max/)
-- Ảnh Galaxy S25 Ultra lấy từ trang sản phẩm Samsung Việt Nam. [Samsung Galaxy S25 Ultra](https://www.samsung.com/vn/smartphones/galaxy-s25-ultra/)
-- Ảnh Pixel 9 Pro Trắng Sứ lấy từ một khung hình trong video giới thiệu chính thức. [Google Pixel 9 Newsroom](https://blog.google/products-and-platforms/devices/pixel/google-pixel-9-pro-xl/)
+- Ảnh iPhone lấy từ Apple Store, bảng so sánh iPhone và Apple Newsroom. Video đầu trang do Apple cung cấp. [So sánh iPhone](https://www.apple.com/iphone/compare/) · [Apple Newsroom](https://www.apple.com/newsroom/2025/09/apple-unveils-iphone-17-pro-and-iphone-17-pro-max/)
+- Ảnh Galaxy lấy từ trang sản phẩm và trang chọn cấu hình Samsung. [Galaxy S25](https://www.samsung.com/vn/smartphones/galaxy-s25/) · [Galaxy Z Fold7](https://www.samsung.com/vn/smartphones/galaxy-z-fold7/) · [Galaxy A56 5G](https://www.samsung.com/vn/smartphones/galaxy-a/galaxy-a56-5g-awesome-graphite-256gb-sm-a566bzktxxv/)
+- Ảnh Pixel lấy từ trang sản phẩm và trang chọn cấu hình Google Store. Ảnh Pixel 9 Pro Trắng Sứ lấy từ video giới thiệu của Google. [Google Store](https://store.google.com/us/magazine/pixel-phone-comparison?hl=en-US) · [Google Pixel 9 Newsroom](https://blog.google/products-and-platforms/devices/pixel/google-pixel-9-pro-xl/)
 - `cpp/vendor/json.hpp` chứa nlohmann/json 3.12.0 theo MIT. Font Manrope dùng giấy phép SIL OFL kèm trong `public/assets/`. [nlohmann/json](https://github.com/nlohmann/json/tree/v3.12.0) · [Manrope](https://github.com/google/fonts/tree/main/ofl/manrope)

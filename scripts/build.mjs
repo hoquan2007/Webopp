@@ -13,7 +13,7 @@ const result = spawnSync(process.env.CXX || 'g++', [
   '-std=c++17', '-O2', '-Wall', '-Wextra', '-pedantic',
   '-finput-charset=UTF-8', '-fexec-charset=UTF-8',
   ...linkerFlags,
-  'cpp/main.cpp', 'cpp/catalog.cpp', 'cpp/store.cpp', '-o', binary
+  'cpp/main.cpp', 'cpp/catalog.cpp', 'cpp/catalog_models.cpp', 'cpp/store.cpp', '-o', binary
 ], { cwd: root, stdio: 'inherit' });
 
 if (result.error) console.error('Cần g++ trong PATH hoặc đặt biến CXX.', result.error.message);
