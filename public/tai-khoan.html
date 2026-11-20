@@ -12,27 +12,34 @@
 <body>
   <header id="site-header"></header>
   <main class="shell inside" id="main">
+    <nav class="breadcrumbs" aria-label="Đường dẫn"><a href="/">Trang chủ</a><span aria-hidden="true">›</span><span aria-current="page">Tài khoản</span></nav>
     <div id="account" class="account-layout">
-      <div class="page-title">
-        <h1 id="account-title">Tài khoản<span class="accent">.</span></h1>
-        <p id="account-intro">Đăng nhập để đặt đơn hàng trên Forma.</p>
+      <div class="account-art" aria-hidden="true">
+        <img src="/media/air-sky.webp" width="820" height="820" alt="">
+        <p>iPhone Air <span>Xanh Da Trời</span></p>
       </div>
-      <div id="account-status" role="status">Đang kiểm tra phiên…</div>
-      <!-- Cookie phiên do máy chủ cấp. Biểu mẫu không lưu mật khẩu trong trình duyệt. -->
-      <form class="form-stack" id="login" hidden>
-        <label>Email <input type="email" name="email" autocomplete="username" required maxlength="254"></label>
-        <label>Mật khẩu <input type="password" name="password" autocomplete="current-password" required maxlength="256"></label>
-        <p class="feedback" id="login-error" role="alert" hidden></p>
-        <button class="button" type="submit">Đăng nhập</button>
-        <div id="demo-login" class="demo-login" hidden>
-          <p>Tài khoản demo <strong>demo@forma.vn</strong><br>Mật khẩu <strong>FormaDemo2026</strong></p>
-          <button type="button" class="text-link" id="fill-demo">Điền tài khoản demo</button>
+      <section class="account-panel" aria-labelledby="account-title" data-ui>
+        <div class="page-title">
+          <h1 id="account-title">Tài khoản</h1>
+          <p id="account-intro">Đăng nhập để đặt đơn hàng trên Forma.</p>
         </div>
-      </form>
-      <section id="profile" class="form-stack" hidden aria-labelledby="profile-title">
-        <h2 id="profile-title">Thông tin tài khoản</h2>
-        <p id="profile-email"></p>
-        <button class="button subtle" id="logout" type="button">Đăng xuất</button>
+        <div id="account-status" role="status">Đang kiểm tra phiên…</div>
+        <!-- Cookie phiên do máy chủ cấp. Biểu mẫu không lưu mật khẩu trong trình duyệt. -->
+        <form class="form-stack" id="login" hidden>
+          <label>Email <input type="email" name="email" autocomplete="username" required maxlength="254"></label>
+          <label>Mật khẩu <input type="password" name="password" autocomplete="current-password" required maxlength="256"></label>
+          <p class="feedback" id="login-error" role="alert" hidden></p>
+          <button class="button" type="submit">Đăng nhập</button>
+          <div id="demo-login" class="demo-login" hidden>
+            <p><strong>Thử bằng tài khoản demo</strong><br>demo@forma.vn / FormaDemo2026</p>
+            <button type="button" class="text-link" id="fill-demo">Điền tài khoản demo</button>
+          </div>
+        </form>
+        <section id="profile" class="form-stack" hidden aria-labelledby="profile-title">
+          <h2 id="profile-title">Thông tin tài khoản</h2>
+          <p id="profile-email"></p>
+          <button class="button subtle" id="logout" type="button">Đăng xuất</button>
+        </section>
       </section>
     </div>
   </main>

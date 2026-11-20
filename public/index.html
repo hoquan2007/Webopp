@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Khám phá iPhone, Galaxy và Google Pixel tại Forma.">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#101827">
   <title>Forma | Cửa hàng điện thoại</title>
   <link rel="icon" href="/assets/forma.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/assets/store.css">
@@ -14,25 +14,60 @@
   <!-- Khung điều hướng và footer được dùng chung cho tất cả các trang. -->
   <header id="site-header"></header>
   <main id="main">
-    <section class="shell hero" aria-labelledby="home-title">
-      <div class="hero-copy">
-        <h1 id="home-title">Điện thoại.<br>Chất riêng.</h1>
-        <p>iPhone, Galaxy và Pixel. Tìm chiếc điện thoại hợp với bạn.</p>
-        <a class="button" href="/dien-thoai">Khám phá điện thoại <span aria-hidden="true">↗</span></a>
+    <!-- Một khung trưng bày với ba mẫu, ảnh và giá đổi theo lựa chọn. -->
+    <section class="shell showcase" aria-label="Điện thoại trưng bày">
+      <div class="showcase-panel" id="showcase-panel" data-model="pro">
+        <div class="showcase-copy">
+          <p class="showcase-brand" id="showcase-brand">Apple</p>
+          <h1 id="home-title">iPhone 17 Pro</h1>
+          <p class="showcase-description" id="showcase-description">Thân nhôm liền khối, chip A19 Pro và ba camera Fusion 48 MP.</p>
+          <p class="showcase-price" id="showcase-price" hidden></p>
+          <div class="showcase-actions">
+            <a class="button" id="showcase-link" href="/san-pham?id=iphone-17-pro">Xem sản phẩm <span aria-hidden="true">↗</span></a>
+            <button type="button" class="film-button" id="open-film"><span class="play" aria-hidden="true"></span> Xem video</button>
+          </div>
+        </div>
+        <figure class="showcase-image">
+          <img id="showcase-image" src="/media/pro-lineup.webp" alt="iPhone 17 Pro màu Xanh Đậm, Cam Vũ Trụ và Bạc" width="1198" height="1198" fetchpriority="high">
+          <figcaption id="showcase-finish">Ba màu hoàn thiện</figcaption>
+        </figure>
       </div>
-      <figure class="hero-stage">
-        <img class="hero-art" src="/media/hero-pro.webp" alt="Mặt trước và mặt sau của iPhone 17 Pro màu Cam Vũ Trụ" width="1130" height="1130" fetchpriority="high">
-        <figcaption class="hero-caption">
-          <a href="/san-pham?id=iphone-17-pro">iPhone 17 Pro <span>Cam Vũ Trụ</span></a>
-          <button type="button" class="film-button" id="open-film"><span class="play" aria-hidden="true"></span> Xem thiết kế</button>
-        </figcaption>
-      </figure>
+      <div class="showcase-nav" id="showcase-nav" hidden>
+        <div class="showcase-choices" role="group" aria-label="Chọn điện thoại trưng bày">
+          <button type="button" data-slide="0" aria-controls="showcase-panel" aria-pressed="true" aria-label="iPhone 17 Pro">iPhone 17 Pro</button>
+          <button type="button" data-slide="1" aria-controls="showcase-panel" aria-pressed="false" aria-label="Galaxy S25 Ultra">Galaxy S25 Ultra</button>
+          <button type="button" data-slide="2" aria-controls="showcase-panel" aria-pressed="false" aria-label="Pixel 9 Pro">Pixel 9 Pro</button>
+        </div>
+        <div class="showcase-arrows">
+          <button class="icon-button" type="button" data-step="-1" aria-label="Mẫu trước">‹</button>
+          <button class="icon-button" type="button" data-step="1" aria-label="Mẫu tiếp theo">›</button>
+        </div>
+      </div>
+      <p class="sr-only" id="showcase-status" role="status"></p>
+    </section>
+
+    <section class="shell brand-section" aria-labelledby="brand-title">
+      <h2 id="brand-title">Khám phá theo hãng</h2>
+      <nav class="brand-grid" aria-label="Danh mục điện thoại">
+        <a href="/dien-thoai?brand=Apple" class="brand-entry brand-apple">
+          <img src="/media/iphone-17-sage.webp" width="820" height="820" alt="">
+          <span><strong>iPhone</strong><small>Apple</small></span><span class="brand-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a href="/dien-thoai?brand=Samsung" class="brand-entry brand-samsung">
+          <img src="/media/galaxy-blue.webp" width="820" height="820" alt="">
+          <span><strong>Galaxy</strong><small>Samsung</small></span><span class="brand-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a href="/dien-thoai?brand=Google" class="brand-entry brand-google">
+          <img src="/media/pixel-porcelain.webp" width="820" height="820" alt="">
+          <span><strong>Pixel</strong><small>Google</small></span><span class="brand-arrow" aria-hidden="true">↗</span>
+        </a>
+      </nav>
     </section>
 
     <section class="shell section" aria-labelledby="featured-title">
       <div class="section-head">
-        <h2 id="featured-title">Mẫu nổi bật<span class="accent">.</span></h2>
-        <a class="text-link" href="/dien-thoai">Xem tất cả <span aria-hidden="true">↗</span></a>
+        <h2 id="featured-title">Mẫu nổi bật</h2>
+        <a class="text-link" href="/dien-thoai">Tất cả điện thoại <span aria-hidden="true">↗</span></a>
       </div>
       <div id="featured" class="feature-grid" aria-live="polite"><p class="muted">Đang tải sản phẩm…</p></div>
     </section>
@@ -42,14 +77,14 @@
         <img src="/media/galaxy-story.webp" alt="Cận cảnh thiết kế và cụm camera của Galaxy S25 Ultra" width="1440" height="560" loading="lazy">
       </div>
       <div class="editorial-copy">
-        <h2 id="editorial-title">Galaxy S25 Ultra<span class="accent">.</span></h2>
-        <p>Khung titan, bút S Pen tích hợp và camera 200 MP.</p>
+        <h2 id="editorial-title">Titan và S Pen</h2>
+        <p>Khung titan, bút S Pen tích hợp và camera chính 200 MP.</p>
         <a class="text-link" href="/san-pham?id=galaxy-s25-ultra">Xem Galaxy S25 Ultra <span aria-hidden="true">↗</span></a>
       </div>
     </section>
 
     <section class="shell section buying" id="ho-tro" aria-labelledby="buying-title">
-      <h2 id="buying-title">Cách mua hàng<span class="accent">.</span></h2>
+      <h2 id="buying-title">Hỗ trợ mua hàng</h2>
       <div>
         <details><summary>Chọn phiên bản điện thoại thế nào?</summary><p>Vào trang sản phẩm để xem ảnh từng màu, chọn dung lượng và xem giá trước khi thêm vào giỏ.</p></details>
         <details><summary>Phí giao hàng được tính ra sao?</summary><p>Phí giao hàng trong bản demo là 50.000 ₫. Đơn có tạm tính từ 20.000.000 ₫ được miễn phí giao hàng.</p></details>

@@ -1,5 +1,5 @@
 // Xác nhận đơn thử bằng phiên đăng nhập và báo giá mới nhất từ C++.
-import { api, mountShell, escapeHtml as e, money, totals, readCart, writeCart, getPromo, setPromo,
+import { api, mountShell, escapeHtml as e, money, totals, capacity, imageUrl, readCart, writeCart, getPromo, setPromo,
   showError, setBusy } from './shared.js';
 
 mountShell();
@@ -31,7 +31,10 @@ try {
       document.querySelector('#buyer-email').textContent = account.email;
       document.querySelector('#checkout-summary').innerHTML = `
         <h2>Đơn hàng của bạn</h2>
-        <ul class="order-items">${quote.items.map(line => `<li>${e(line.name)} × ${line.quantity}</li>`).join('')}</ul>
+        <ul class="order-items">${quote.items.map(line => `
+          <li><img src="${imageUrl(line.image)}" width="64" height="64" alt="">
+              <span><strong>${e(line.name)}</strong><small>${e(line.colorName)} / ${capacity(line.storage)} × ${line.quantity}</small></span>
+          </li>`).join('')}</ul>
         ${totals(quote)}`;
       status.textContent = '';
       layout.hidden = false;
@@ -51,6 +54,7 @@ form.addEventListener('submit', async event => {
     setPromo('');
     layout.hidden = true;
     result.innerHTML = `
+      <span class="confirmation-mark" aria-hidden="true"></span>
       <h2>Đơn demo đã được xác nhận.</h2>
       <p>Mã đơn <strong>${e(order.id)}</strong></p>
       <p>${e(order.payment.status)} · ${money(order.quote.total)}</p>

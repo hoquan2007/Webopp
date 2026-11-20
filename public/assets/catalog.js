@@ -1,5 +1,5 @@
 // Tìm kiếm, lọc và sắp xếp qua API, giữ lại truy vấn trong URL.
-import { api, mountShell, tile, showError } from './shared.js';
+import { api, mountShell, tile, showError, imageUrl } from './shared.js';
 
 mountShell();
 const filters = document.querySelector('#brand-filters');
@@ -8,6 +8,21 @@ const results = document.querySelector('#catalog-results');
 const count = document.querySelector('#result-count');
 const params = new URLSearchParams(location.search);
 for (const name of ['brand', 'q', 'sort']) form.elements[name].value = params.get(name) || '';
+
+const brandBanners = new Map([
+  ['Apple', ['iPhone', 'Khám phá iPhone Pro, iPhone Air và các phiên bản tiêu chuẩn.', 'iphone-17-sage']],
+  ['Samsung', ['Samsung Galaxy', 'Khám phá dòng Galaxy và các phiên bản màu titan.', 'galaxy-blue']],
+  ['Google', ['Google Pixel', 'Điện thoại Pixel với Android và camera của Google.', 'pixel-porcelain']]
+]);
+const banner = brandBanners.get(form.elements.brand.value);
+if (banner) {
+  const [title, summary, image] = banner;
+  document.querySelector('#catalog-title').textContent = title;
+  document.querySelector('#catalog-intro').textContent = summary;
+  document.querySelector('#catalog-image').src = imageUrl(image);
+  document.querySelector('#catalog-hero').dataset.brand = form.elements.brand.value;
+  document.title = `${title} | Forma`;
+}
 
 for (const link of filters.querySelectorAll('a')) {
   const query = new URLSearchParams(params);

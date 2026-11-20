@@ -12,23 +12,29 @@
 <body>
   <header id="site-header"></header>
   <main class="shell inside" id="main">
-    <div class="page-title">
-      <h1>Điện thoại<span class="accent">.</span></h1>
-      <p>Chọn theo thương hiệu, màu sắc và dung lượng bạn cần.</p>
+    <nav class="breadcrumbs" aria-label="Đường dẫn"><a href="/">Trang chủ</a><span aria-hidden="true">›</span><span aria-current="page">Điện thoại</span></nav>
+    <div class="catalog-hero" id="catalog-hero">
+      <div class="page-title">
+        <h1 id="catalog-title">Điện thoại</h1>
+        <p id="catalog-intro">iPhone, Samsung Galaxy và Google Pixel. Chọn mẫu hợp với bạn.</p>
+      </div>
+      <img id="catalog-image" src="/media/pro-blue.webp" width="820" height="820" alt="">
     </div>
     <!-- Bộ lọc nằm trong URL để có thể mở lại hoặc chia sẻ kết quả. -->
-    <nav class="filters" id="brand-filters" aria-label="Thương hiệu">
-      <a href="/dien-thoai" data-brand="">Tất cả</a>
-      <a href="/dien-thoai?brand=Apple" data-brand="Apple">iPhone</a>
-      <a href="/dien-thoai?brand=Samsung" data-brand="Samsung">Galaxy</a>
-      <a href="/dien-thoai?brand=Google" data-brand="Google">Pixel</a>
-    </nav>
-    <form class="catalog-tools" id="catalog-tools" action="/dien-thoai">
-      <input type="hidden" name="brand">
-      <div class="search-field"><label for="catalog-query" class="sr-only">Tìm theo tên mẫu</label><input id="catalog-query" name="q" type="search" maxlength="80" placeholder="Tìm theo tên mẫu…"><button class="button subtle" type="submit">Tìm</button></div>
-      <label class="sort-field"><span class="sr-only">Sắp xếp</span><select name="sort"><option value="">Nổi bật</option><option value="asc">Giá thấp đến cao</option><option value="desc">Giá cao đến thấp</option></select></label>
-    </form>
-    <p class="muted result-count" id="result-count" aria-live="polite"></p>
+    <div class="catalog-controls" data-ui>
+      <nav class="filters" id="brand-filters" aria-label="Thương hiệu">
+        <a href="/dien-thoai" data-brand="">Tất cả</a>
+        <a href="/dien-thoai?brand=Apple" data-brand="Apple">iPhone</a>
+        <a href="/dien-thoai?brand=Samsung" data-brand="Samsung">Galaxy</a>
+        <a href="/dien-thoai?brand=Google" data-brand="Google">Pixel</a>
+      </nav>
+      <form class="catalog-tools" id="catalog-tools" action="/dien-thoai">
+        <input type="hidden" name="brand">
+        <div class="search-field"><label for="catalog-query" class="sr-only">Tìm theo tên mẫu</label><input id="catalog-query" name="q" type="search" maxlength="80" placeholder="Tìm theo tên mẫu…"><button class="button subtle" type="submit">Tìm</button></div>
+        <label class="sort-field"><span class="sr-only">Sắp xếp</span><select name="sort"><option value="">Nổi bật</option><option value="asc">Giá thấp đến cao</option><option value="desc">Giá cao đến thấp</option></select></label>
+      </form>
+      <p class="muted result-count" id="result-count" aria-live="polite"></p>
+    </div>
     <div class="catalog-grid" id="catalog-results" aria-busy="true"><p class="muted">Đang tải sản phẩm…</p></div>
   </main>
   <footer id="site-footer"></footer>

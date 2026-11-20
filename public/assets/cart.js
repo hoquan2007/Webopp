@@ -28,7 +28,10 @@ function render(bill, promo) {
     return;
   }
   target.innerHTML = `<div class="purchase-layout">
-    <div>${bill.items.map(cartRow).join('')}</div>
+    <section class="cart-list" aria-labelledby="cart-items-title">
+      <div class="cart-list-head"><h2 id="cart-items-title">Điện thoại đã chọn</h2><span>${bill.count} máy</span></div>
+      ${bill.items.map(cartRow).join('')}
+    </section>
     <aside class="summary" aria-labelledby="summary-title">
       <h2 id="summary-title">Tóm tắt đơn hàng</h2>
       <form id="promo-form" class="form-stack">

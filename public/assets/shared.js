@@ -71,27 +71,27 @@ function updateCartCount() {
 }
 
 const nav = [
-  ['Điện thoại', '/dien-thoai', ''],
+  ['Cửa hàng', '/dien-thoai', ''],
   ['iPhone', '/dien-thoai?brand=Apple', 'Apple'],
   ['Galaxy', '/dien-thoai?brand=Samsung', 'Samsung'],
   ['Pixel', '/dien-thoai?brand=Google', 'Google']
 ];
-const logo = '<a class="wordmark" href="/" aria-label="Forma, trang chủ">forma<span>.</span></a>';
+const logo = '<a class="wordmark" href="/" aria-label="Forma, trang chủ"><img src="/assets/forma.svg" width="35" height="35" alt="">forma<span>.</span></a>';
 
 export function mountShell() {
   const page = location.pathname.replace(/\.html$|\/$/g, '');
   const brand = new URLSearchParams(location.search).get('brand') || '';
-  const navHtml = nav.map(([name, url, filter]) => `<a href="${url}"${page === '/dien-thoai' && brand === filter ? ' aria-current="page"' : ''}>${name}</a>`).join('');
+  const navHtml = nav.map(([name, url, filter]) => `<a href="${url}"${(page === '/dien-thoai' && brand === filter) || (page === '/san-pham' && !filter) ? ' aria-current="page"' : ''}>${name}</a>`).join('');
   const header = document.querySelector('#site-header');
   header.innerHTML = `
     <a class="skip-link" href="#main">Đến nội dung</a>
     <div class="shell header-row">
       ${logo}
-      <nav class="main-nav" aria-label="Điều hướng chính">${navHtml}</nav>
+      <nav class="main-nav" aria-label="Điều hướng chính">${navHtml}<a class="support-nav" href="/#ho-tro">Hỗ trợ</a></nav>
       <div class="header-actions">
-        <button id="search-open" type="button" class="icon-button" aria-label="Tìm điện thoại" aria-haspopup="dialog">${icon('search')}</button>
-        <a class="icon-button" href="/tai-khoan" aria-label="Tài khoản">${icon('user')}</a>
-        <a class="icon-button bag-link" href="/gio-hang" aria-label="Giỏ hàng">${icon('bag')}<span id="cart-count" hidden></span></a>
+        <button id="search-open" type="button" class="header-action header-search" aria-label="Tìm điện thoại" aria-haspopup="dialog">${icon('search')}<span>Tìm điện thoại</span></button>
+        <a class="header-action" href="/tai-khoan" aria-label="Tài khoản" title="Tài khoản">${icon('user')}</a>
+        <a class="header-action bag-link" href="/gio-hang" aria-label="Giỏ hàng" title="Giỏ hàng">${icon('bag')}<span id="cart-count" hidden></span></a>
       </div>
     </div>
     <dialog id="header-search" class="search-dialog" aria-labelledby="search-title">
@@ -101,14 +101,24 @@ export function mountShell() {
         <input id="global-query" name="q" type="search" maxlength="80" placeholder="Ví dụ iPhone, Galaxy…" required>
         <button class="button" type="submit">Tìm</button>
       </form>
+      <div class="search-suggestions" aria-label="Gợi ý tìm kiếm">
+        <a href="/dien-thoai?q=iPhone">iPhone</a><a href="/dien-thoai?q=Galaxy">Galaxy</a><a href="/dien-thoai?q=Pixel">Pixel</a>
+      </div>
     </dialog>`;
   const footer = document.querySelector('#site-footer');
   footer.innerHTML = `<div class="shell footer-wrap">
     <div class="footer-top">
-      <div>${logo}<p>Cửa hàng điện thoại demo.</p></div>
-      <nav aria-label="Liên kết cuối trang"><a href="/dien-thoai">Điện thoại</a><a href="/tai-khoan">Tài khoản</a><a href="/#ho-tro">Cách mua hàng</a></nav>
+      <div class="footer-brand">${logo}<p>Điện thoại Apple, Samsung và Google.</p></div>
+      <nav aria-label="Thương hiệu">
+        <strong>Điện thoại</strong>
+        ${nav.slice(1).map(([name, url]) => `<a href="${url}">${name}</a>`).join('')}
+      </nav>
+      <nav aria-label="Mua hàng">
+        <strong>Mua hàng</strong>
+        <a href="/gio-hang">Giỏ hàng</a><a href="/tai-khoan">Tài khoản</a><a href="/#ho-tro">Hỗ trợ mua hàng</a>
+      </nav>
     </div>
-    <p class="footer-credit">Hình ảnh và video từ
+    <p class="footer-credit">Cửa hàng demo. Hình ảnh và video từ
       <a href="https://www.apple.com/newsroom/2025/09/apple-unveils-iphone-17-pro-and-iphone-17-pro-max/">Apple</a>,
       <a href="https://www.samsung.com/vn/smartphones/galaxy-s25-ultra/">Samsung</a> và
       <a href="https://blog.google/products-and-platforms/devices/pixel/google-pixel-9-pro-xl/">Google</a>.
@@ -124,16 +134,19 @@ export function mountShell() {
 }
 
 export function tile(product) {
-  const { name, tagline, price, colors, image, id } = product;
+  const { name, price, colors, image, id, brand, storage } = product;
   const palette = colors.map(color => `<span title="${escapeHtml(color.name)}" style="--swatch:${escapeHtml(color.hex)}"></span>`).join('');
   return `<article class="product-tile">
-    <a href="${productUrl(id)}" class="tile-art" aria-label="Xem ${escapeHtml(name)}">
-      <img src="${imageUrl(image)}" width="620" height="620" alt="${escapeHtml(name)}" loading="lazy">
+    <a href="${productUrl(id)}" class="tile-link" aria-label="Xem ${escapeHtml(name)}">
+      <div class="tile-art"><img src="${imageUrl(image)}" width="820" height="820" alt="" loading="lazy"></div>
+      <div class="tile-info">
+        <p class="tile-brand">${escapeHtml(brand)}</p>
+        <h3>${escapeHtml(name)}</h3>
+        <p class="tile-storage">${storage.map(option => capacity(option.gb)).join(' / ')}</p>
+        <div class="swatches" role="img" aria-label="${escapeHtml(colors.map(color => color.name).join(', '))}">${palette}</div>
+        <div class="tile-bottom"><p class="tile-price"><small>Từ</small> ${money(price)}</p><span class="tile-arrow" aria-hidden="true">↗</span></div>
+      </div>
     </a>
-    <div class="swatches" aria-label="${colors.length} màu">${palette}</div>
-    <h3><a href="${productUrl(id)}">${escapeHtml(name)}</a></h3>
-    <p>${escapeHtml(tagline)}</p>
-    <p class="tile-price">Từ ${money(price)}</p>
   </article>`;
 }
 

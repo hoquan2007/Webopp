@@ -12,24 +12,26 @@
 <body>
   <header id="site-header"></header>
   <main class="shell inside" id="main">
-    <a href="/gio-hang" class="back-link">← Giỏ hàng</a>
-    <div class="page-title"><h1>Thanh toán<span class="accent">.</span></h1><p>Đặt đơn thử với thông tin người nhận mẫu.</p></div>
+    <nav class="breadcrumbs" aria-label="Các bước mua hàng"><a href="/dien-thoai">Điện thoại</a><span aria-hidden="true">›</span><a href="/gio-hang">Giỏ hàng</a><span aria-hidden="true">›</span><span aria-current="step">Thanh toán</span></nav>
+    <div class="page-title"><h1>Thanh toán</h1><p>Đặt đơn thử với thông tin người nhận mẫu.</p></div>
     <div id="checkout-status" role="status"></div>
     <div class="purchase-layout" id="checkout-layout" hidden>
-      <form class="form-stack" id="checkout-form">
+      <form class="form-stack checkout-form" id="checkout-form" data-ui>
         <!-- Địa chỉ chỉ được gửi khi xác nhận đơn. Lõi C++ kiểm tra lại toàn bộ dữ liệu. -->
         <section class="form-stack" aria-labelledby="delivery-title">
           <h2 id="delivery-title">Thông tin nhận hàng</h2>
           <p class="muted" id="buyer-email"></p>
-          <label>Họ và tên <input name="name" autocomplete="shipping name" required maxlength="90"></label>
-          <label>Số điện thoại <input name="phone" type="tel" autocomplete="shipping tel" placeholder="0901234567" required maxlength="16"></label>
-          <label>Địa chỉ <input name="address" autocomplete="shipping street-address" required maxlength="180"></label>
-          <label>Tỉnh hoặc thành phố <input name="city" autocomplete="shipping address-level1" required maxlength="70"></label>
+          <div class="delivery-fields">
+            <label>Họ và tên <input name="name" autocomplete="shipping name" required maxlength="90"></label>
+            <label>Số điện thoại <input name="phone" type="tel" autocomplete="shipping tel" placeholder="0901234567" required maxlength="16"></label>
+            <label class="address-field">Địa chỉ <input name="address" autocomplete="shipping street-address" required maxlength="180"></label>
+            <label>Tỉnh hoặc thành phố <input name="city" autocomplete="shipping address-level1" required maxlength="70"></label>
+          </div>
         </section>
         <fieldset class="payment-options">
           <legend>Phương thức thanh toán</legend>
-          <label><input type="radio" name="payment" value="cod" checked> Trả khi nhận hàng</label>
-          <label><input type="radio" name="payment" value="demo"> Thanh toán online mô phỏng</label>
+          <label><input type="radio" name="payment" value="cod" checked><span>Trả khi nhận hàng</span></label>
+          <label><input type="radio" name="payment" value="demo"><span>Thanh toán online mô phỏng</span></label>
         </fieldset>
         <p class="muted">Đơn demo không giao hàng hoặc thu tiền.</p>
         <p class="feedback" id="checkout-error" role="alert" hidden></p>

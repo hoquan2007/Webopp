@@ -23,15 +23,22 @@ function render(product) {
     ['Màn hình', product.display], ['Vi xử lý', product.chip], ['Camera', product.camera],
     ['Chất liệu', product.body], ['Hệ điều hành', product.system]
   ];
+  const breadcrumb = document.querySelector('#product-crumb');
+  breadcrumb.textContent = product.name;
+  breadcrumb.hidden = document.querySelector('#product-crumb-divider').hidden = false;
   target.innerHTML = `
     <div class="product-layout">
-      <figure class="product-figure"><img id="product-image" src="${imageUrl(firstColor.image)}" width="820" height="820" alt="${e(product.name)} màu ${e(firstColor.name)}"></figure>
+      <figure class="product-figure">
+        <img id="product-image" src="${imageUrl(firstColor.image)}" width="820" height="820" alt="${e(product.name)} màu ${e(firstColor.name)}">
+        <figcaption id="image-finish">${e(firstColor.name)}</figcaption>
+      </figure>
       <div class="product-info">
         <p class="muted product-brand">${e(product.brand)}</p>
         <h1>${e(product.name)}</h1>
         <p>${e(product.description)}</p>
         <p class="product-price" id="product-price" aria-live="polite">${money(firstStorage.price)}</p>
-        <form id="configuration" class="form-stack">
+        <a class="text-link product-spec-link" href="#spec-title">Xem thông số <span aria-hidden="true">↓</span></a>
+        <form id="configuration" class="form-stack" data-ui>
           <fieldset><legend>Màu sắc <span class="muted" id="color-name">${e(firstColor.name)}</span></legend>
             <div class="color-options">${colors}</div>
           </fieldset>
@@ -40,6 +47,7 @@ function render(product) {
           <p id="product-error" class="feedback" role="alert" hidden></p>
           <p id="added" class="success" role="status" hidden>Đã thêm vào giỏ. <a href="/gio-hang">Xem giỏ hàng</a></p>
         </form>
+        <p class="shipping-note">Xem phí giao hàng và áp dụng mã ưu đãi trong giỏ.</p>
       </div>
     </div>
     <section class="section specs" aria-labelledby="spec-title"><h2 id="spec-title">Thông số kỹ thuật</h2>
@@ -48,6 +56,7 @@ function render(product) {
   const form = target.querySelector('#configuration');
   const photo = target.querySelector('#product-image');
   const colorName = target.querySelector('#color-name');
+  const finish = target.querySelector('#image-finish');
   const price = target.querySelector('#product-price');
   const status = target.querySelector('#added');
   const feedback = target.querySelector('#product-error');
@@ -59,6 +68,7 @@ function render(product) {
     photo.src = imageUrl(color.image);
     photo.alt = `${product.name} màu ${color.name}`;
     colorName.textContent = color.name;
+    finish.textContent = color.name;
     price.textContent = money(storage.price);
     status.hidden = feedback.hidden = true;
   });
