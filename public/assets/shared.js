@@ -77,7 +77,7 @@ const nav = [
   ['Pixel', '/dien-thoai?brand=Google', 'Google']
 ];
 // Đầu và chân trang dùng chung biểu tượng và tên Forma.
-const logo = '<a class="wordmark" href="/" aria-label="Forma, trang chủ"><img src="/assets/forma-mark.svg" width="26" height="28" alt="">forma.</a>';
+const logo = '<a class="wordmark" href="/" aria-label="Forma, trang chủ"><img src="/assets/forma-mark.svg" width="27" height="27" alt="">forma.</a>';
 
 export function mountShell() {
   const page = location.pathname.replace(/\.html$|\/$/g, '');

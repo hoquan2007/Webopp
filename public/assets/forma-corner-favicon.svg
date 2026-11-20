@@ -1,0 +1,5 @@
+<!-- Biểu tượng góc màn hình, căn giữa ô xanh đêm cho tab trình duyệt. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-6 -6 60 60">
+  <rect x="-6" y="-6" width="60" height="60" rx="13" fill="#101827"/>
+  <path fill="#dce4ef" d="M6 33V15Q6 7 14 7H32L27 13H15Q12 13 12 16V28Z M42 15V33Q42 41 34 41H16L21 35H33Q36 35 36 32V20Z"/>
+</svg>
