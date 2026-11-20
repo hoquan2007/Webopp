@@ -1,5 +1,0 @@
-<!-- Biểu tượng Forma cho tab trình duyệt. -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="16" fill="#315af3"/>
-  <path d="M21 45V20h24m-24 12h17M32 45h13" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>

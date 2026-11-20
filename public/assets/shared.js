@@ -76,7 +76,8 @@ const nav = [
   ['Galaxy', '/dien-thoai?brand=Samsung', 'Samsung'],
   ['Pixel', '/dien-thoai?brand=Google', 'Google']
 ];
-const logo = '<a class="wordmark" href="/" aria-label="Forma, trang chủ"><img src="/assets/forma.svg" width="35" height="35" alt="">forma<span>.</span></a>';
+// Đầu và chân trang dùng chung biểu tượng và tên Forma.
+const logo = '<a class="wordmark" href="/" aria-label="Forma, trang chủ"><img src="/assets/forma-mark.svg" width="26" height="28" alt="">forma.</a>';
 
 export function mountShell() {
   const page = location.pathname.replace(/\.html$|\/$/g, '');

@@ -101,9 +101,8 @@ h3 { font-size: clamp(1rem, 1.55vw, 1.28rem); }
 /* Điều hướng, ô tìm kiếm và chân trang dùng chung. */
 #site-header { position: sticky; top: 0; z-index: 5; background: var(--night); color: var(--white); }
 .header-row { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; min-height: 74px; }
-.wordmark { display: inline-flex; align-items: center; gap: .55rem; justify-self: start; width: fit-content; font-size: 1.95rem; font-weight: 800; letter-spacing: -.09em; line-height: 1; }
-.wordmark span { margin-left: -.51rem; color: var(--nav-muted); }
-.wordmark img { flex: none; border-radius: var(--control-radius); }
+.wordmark { display: inline-flex; align-items: center; gap: .6rem; justify-self: start; width: fit-content; font-size: 1.95rem; font-weight: 800; letter-spacing: -.07em; line-height: 1; }
+.wordmark img { flex: none; }
 .main-nav, .header-actions { display: flex; align-items: center; }
 .main-nav { gap: clamp(1.05rem, 2.35vw, 2.3rem); font-size: .88rem; font-weight: 750; }
 .main-nav a { display: inline-flex; align-items: center; min-height: 44px; color: var(--nav-muted); }
@@ -406,7 +405,7 @@ dialog::backdrop { background: var(--backdrop); }
 @media (max-width: 560px) {
   .header-row { grid-template-columns: 1fr auto; min-height: 0; padding-top: .48rem; }
   .wordmark { font-size: 1.65rem; }
-  .wordmark img { width: 30px; height: 30px; }
+  .wordmark img { width: 23px; height: auto; }
   .header-actions { grid-column: 2; grid-row: 1; }
   .main-nav { grid-row: 2; grid-column: 1 / -1; justify-content: space-between; padding: .18rem 0 .3rem; }
   .main-nav a { min-height: 39px; }
